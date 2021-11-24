@@ -35,7 +35,7 @@ export default function Home({RESOURCES}) {
 
 //se manda a llamar c/vez que se visita la pág, la f se ejecuta en el sevidor. Los datos siempre serán "frescos"
 export const getServerSideProps=async ()=>{
-  const respuesta=await fetch('http://localhost:3001/api/resources');
+  const respuesta=await fetch(`${process.env.API_URL}/resources`);
   const resultado=await respuesta.json();
 
   return {

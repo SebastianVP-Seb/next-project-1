@@ -60,7 +60,7 @@ export default ResourceDetail;
 //El nombre de "id", debe coincidir con el nombre del archivo [id].js
 export async function getServerSideProps(context) {
 
-    const dataRespuesta=await fetch(`http://localhost:3001/api/resources/${context.params.id}`);
+    const dataRespuesta=await fetch(`${process.env.API_URL}/resources/${context.params.id}`);
     const data=await dataRespuesta.json();
 
     return {
