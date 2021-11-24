@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
+import ActiveResource from './ActiveResource';
 
 
 function Layout(props) {
@@ -7,6 +8,8 @@ function Layout(props) {
         <>
 
             <Navbar />
+
+            <ActiveResource />
 
             { props.children }
             

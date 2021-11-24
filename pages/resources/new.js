@@ -9,7 +9,8 @@ const ResourceCreate=()=> {
 
     const createResource=(form)=>{//los datos del form los recibe de ResourceForm, ahí, al ejecutar la f submitForm
         // alert(JSON.stringify(form));
-        //no es necesari oponer toda la url
+        //no es necesario poner toda la url
+        //en dónde, qué...
         axios.post('/api/resources', form)
             .then((_)=>{
                 router.push('/')

@@ -202,7 +202,19 @@ En el nombre de una ruta o path no se toma en cuenta el nombre "index":
 Crear folder [id] -> dentro index.js ->copiar y pegar todo el código que se tenía en el [id].js
 De esta forma se podrá crear el path arriba indicado
 
+//patch en axios se usa para actualizar datos existentes
 
+//Para el btn active:(componets -> ActiveResource)
+Cuando se de click al btn active -> el status en la db de ése item cambiará a "Activado"
+Sólo se podrá tener a la vez un recurso activado -> trabajar en el index de node
+
+//Para establecer el tiempo en segundos -> npm install --save moment
+Buscar documentación: moment.js
+
+//Creando un state para los segundos que quedan para terminar la tarea, y que se muestren de maneta dinámica sin tener que
+actualizar la pág. En ActiveResource.jsx. Y se crea un useEffect que se ejecutará c/que los segundos cambien
+También se usa la f setInterval -> primero recibe un callback que se ejecutará c/det t, como 2do argumento recibe el t en ms
+que transcurrirá c/vez para que se ejecute el callback
 
 
 

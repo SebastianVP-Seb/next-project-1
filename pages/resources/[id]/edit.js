@@ -1,6 +1,6 @@
 import Layout from 'components/Layout';
 import ResourceForm from 'components/ResourceForm';
-import React from 'react';
+import axios from 'axios';
 
 function edit({resource}) {
     //El prop initial data tendrá los datos del recurso que se quiere editar
@@ -8,6 +8,12 @@ function edit({resource}) {
 
     const updateForm=(form)=>{
         alert(JSON.stringify(form));
+    };
+
+    const updateResource=(form)=>{
+        axios.patch('/api/resources', form)
+            .then(()=>alert('Data has been updated'))
+            .catch(err=>alert(err?.response?.data))
     };
 
     return (
@@ -18,7 +24,7 @@ function edit({resource}) {
                         Esta es la pág Edit de {`${resource.title}`}
                         <ResourceForm 
                             initialData={resource}
-                            onSubmitForm={updateForm}
+                            onSubmitForm={updateResource}
                         />
                     </div>
                 </div>

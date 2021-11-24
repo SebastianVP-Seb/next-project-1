@@ -19,3 +19,19 @@ a {
 .resource-form {
   margin-top: 5rem;
 }
+
+.active-resource {
+  padding: 45px;
+  background-image: linear-gradient(to bottom, rgba(127, 255, 212, 0.76), rgba(127, 255, 212, 0.404));
+  text-align: center;
+  color: gray;
+}
+
+.resource-name {
+  font-size: 25px;
+}
+
+.elapsed-time {
+  font-size: 60px;
+  font-weight: bold;
+}
