@@ -1,5 +1,6 @@
-import React from 'react';
 import Link from 'next/dist/client/link';
+import ResourceLabel from './ResourceLabel';
+import moment from 'moment';
 
 function ResourceList(props) {
     return (
@@ -13,8 +14,11 @@ function ResourceList(props) {
                                     return (
                                         <div key={resource.id} className="column is-5 is-offset-1 ">
                                             <div className="content is-medium">
-                                                <h2 className="subtitle is-5 has-text-grey">{resource.createdAt}</h2>
+                                                <h2 className="subtitle is-5 has-text-grey">{moment(resource.createdAt).format('LLLL')}</h2>
                                                 <h1 className="title has-text-black is-3">{resource.title}</h1>
+
+                                                <ResourceLabel resource={resource} />
+                                            
                                                 <p className="has-text-dark">{resource.description}</p>
                                                 <Link href={`/resources/${resource.id}`} >
                                                     <a className='button is-primary' >See more details</a>

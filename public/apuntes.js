@@ -214,10 +214,38 @@ Buscar documentación: moment.js
 //Creando un state para los segundos que quedan para terminar la tarea, y que se muestren de maneta dinámica sin tener que
 actualizar la pág. En ActiveResource.jsx. Y se crea un useEffect que se ejecutará c/que los segundos cambien
 También se usa la f setInterval -> primero recibe un callback que se ejecutará c/det t, como 2do argumento recibe el t en ms
-que transcurrirá c/vez para que se ejecute el callback
+que transcurrirá c/vez para que se ejecute el callback.
 
+//Con location.reloaded()) -> se puede reiniciar el navegador, esto para que al activar la tarea, se muestre la cuenta regresiva
+se manda a llamar en el index.js, en el then
 
+//Al hacer click en el btn Click and done, se debe marcar el Texto del botón de "Activar" a "Terminado", así mismo se debe
+actualizar la db en node, cambiando el estatus de "Active" a "complete" : f completeResource en ActiveResource.jsx
 
+//Una vez que una tarea ha sido completada, no se puede volver a activar: En el index de node, preguntar antes de almacenar
+algún dato, si esta tarea viene con el status de complete, si sí, se lanza error.
+
+//Para mostrar el status del resource: en index.js, en ResourceHightLight, dentro del h1
+
+//Para que cada tag tenga un color en f de su status, se crea en el folder componets -> ResourceLabel.
+Después, se crea cada clase como: resource-complete ...
+
+Si el status está inactivo: entonces muestra los sig botones
+
+                                  resource.status==='inactive' && 
+                                  <>
+                                      <Link href={`/resources/${resourceId}/edit`} >
+                                          <a className='button is-warning' >Edit</a>
+                                      </Link>
+                                      <button className='button is-primary ml-2'
+                                              onClick={activateResource}>
+                                          Activar
+                                      </button>
+                                  </>
+
+//Variables de entorno:
+  crear a la altura del package: .env.development
+  se manda a llamar como: process.env.API_URL
 
 
 

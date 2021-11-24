@@ -35,3 +35,21 @@ a {
   font-size: 60px;
   font-weight: bold;
 }
+
+.div-tag {
+  display: flex;
+
+}
+
+/* Se escribe tag para que sea más específico y se apliquen los estilos  */
+.tag.resource-complete {
+  background-color: aquamarine;
+}
+
+.tag.resource-inactive {
+  background-color: rgb(140, 127, 255);
+}
+
+.tag.resource-active {
+  background-color: rgb(244, 127, 255);
+}

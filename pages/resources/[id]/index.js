@@ -1,6 +1,8 @@
 import Layout from 'components/Layout';
 import Link from 'next/dist/client/link';
 import axios from 'axios';
+import ResourceLabel from 'components/ResourceLabel';
+import moment from 'moment';
 
 function ResourceDetail({resourceId, resource}) {
 
@@ -10,7 +12,8 @@ function ResourceDetail({resourceId, resource}) {
     const activateResource=()=>{
         //Para activar el recurso        
         axios.patch('/api/resources', {...resource, status: 'active'})
-            .then(()=>alert('Rsource has been activated'))
+            .then(()=>{alert('Rsource has been activated')
+                       location.reload()})
             .catch(()=>alert('Cannot active this resource'))
     };
 
@@ -23,17 +26,24 @@ function ResourceDetail({resourceId, resource}) {
                             <div className="columns">
                                 <div className="column is-8 is-offset-2">
                                     <div className="content is-medium">
-                                        <h2 className="subtitle is-4">{resource.createdAt}</h2>
+                                        <h2 className="subtitle is-4">{moment(resource.createdAt).format('LLLL')}</h2>
                                         <h1 className="title">{resource.title}</h1>
+                                        <ResourceLabel resource={resource} />
                                         <p>{resource.description}</p>
                                         <p>Time to finish: {resource.timeToFinish} minutes</p>
-                                        <Link href={`/resources/${resourceId}/edit`} >
-                                            <a className='button is-warning' >Edit</a>
-                                        </Link>
-                                        <button className='button is-primary ml-2'
-                                                onClick={activateResource}>
-                                            Activar
-                                        </button>
+                                        {
+                                            resource.status==='inactive' && 
+                                            <>
+                                                <Link href={`/resources/${resourceId}/edit`} >
+                                                    <a className='button is-warning' >Edit</a>
+                                                </Link>
+                                                <button className='button is-primary ml-2'
+                                                        onClick={activateResource}>
+                                                    Activar
+                                                </button>
+                                            </>
+                                        }
+                                        <button className='button is-danger is-light ml-2'>Delete</button>
                                     </div>
                                 </div>
                             </div>

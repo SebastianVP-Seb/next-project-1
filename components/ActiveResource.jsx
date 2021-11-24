@@ -56,17 +56,45 @@ function ActiveResource() {
 
     }, [seconds]);
 
+    const completeResource=()=>{
+        //Para activar el recurso        
+        axios.patch('/api/resources', {...resource, status: 'complete'})
+            .then(()=>{alert('Rsource has been activated')
+                       location.reload()})
+            .catch(()=>alert('Cannot complete this resource'))
+    };
+
+    //Para que al cambiar de pág, no se muestre vacío el contendor de los segundos restantes:
+    const hasResource=resource && resource.id;
+
     return (
         <div className='active-resource' >
-            <h1 className='resource-name'>Sebastian Palacios {resource.title}</h1>
+            <h1 className='resource-name'>
+                {hasResource ? resource.title : 'There is not any resource active'}</h1>
             <div className="time-wrapper">
-                <h2 className="elapsed-time">{`Quedan ${seconds} segundos para terminar la tarea.`}</h2>
+                {
+                    hasResource && 
+                    (
+                        seconds>0
+                        ? <h2 className="elapsed-time">{` ${seconds} left`}</h2>
+                        : <h2 className="elapsed-time">
+                            <button className='button is-success is-outlined'
+                                    onClick={completeResource}
+                            >Click and Done</button>
+                        </h2>
+                    )
+                }
+                
             </div>
-            <div>
-                <Link href="/">
+            {
+                hasResource 
+                ? <Link href={`/resources/${resource.id}`}>
                     <a className='button is-primary is-outlined'>Ir al recurso</a>
                 </Link>
-            </div>
+                : <Link href="/">
+                    <a className='button is-primary is-outlined'>Ir a los recursos</a>
+                </Link>
+            }
         </div>
     );
 };
